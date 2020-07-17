@@ -113,9 +113,12 @@ import (
 
 func clockHandler(w http.ResponseWriter, r *http.Request) {
   
-  t := template.Must(template.ParseFiles("/etc/gohttpserver/templates/clock.html"))
+  t := template.Must(template.ParseFiles("/etc/gohttpserver/templates/clock.html.tpl"))
   
-  if err := t.ExecuteTemplate(w, "clock.html.tpl"
+  if err := t.ExecuteTemplate(w, "clock.html.tpl", time.Now()); err != nil {
+    log.Fatal(err)
+  }
+}
 
 func main() {
   http.HandleFunc("/clock", clockHandler)
