@@ -100,3 +100,29 @@ funcmain() {
   log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
+/* dynamic pages 1
+
+package main
+
+import (
+  "html/template"
+  "log"
+  "net/http"
+  "time"
+)
+
+func clockHandler(w http.ResponseWriter, r *http.Request) {
+  
+  t := template.Must(template.ParseFiles("/etc/gohttpserver/templates/clock.html"))
+  
+  if err := t.ExecuteTemplate(w, "clock.html.tpl"
+
+func main() {
+  http.HandleFunc("/clock", clockHandler)
+  
+  http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("/etc/gohttpserver/doc"))))
+  
+  log.Fatal(http.ListenAndServe(":8080", nil))
+}
+
+*/
